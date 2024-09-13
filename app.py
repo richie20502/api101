@@ -7,6 +7,15 @@ def home():
     return jsonify({
         "message" : "Bienvendo api flask dsm 101"
     })
+    
+@app.route('/api/data', methods=['GET'])
+def det_data_get():
+    content_body = {
+        "name": "Ricardo",
+        "last_name": "Lugo"
+    } 
+    
+    return jsonify(content_body)
 
 @app.route('/api/data', methods=['POST'])
 def det_data_post():
