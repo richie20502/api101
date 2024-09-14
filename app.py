@@ -12,7 +12,7 @@ def home():
 def det_data_get():
     content_body = {
         "name": "Ricardo",
-        "last_name": "Lugo"
+        "last_name": "Lugo Recillas"
     } 
     
     return jsonify(content_body)
@@ -22,7 +22,6 @@ def det_data_post():
     content_body = request.json
     print("******************")
     print(content_body)
-    print("******************")
     return jsonify({
         "recived" : content_body
     })
