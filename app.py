@@ -1,6 +1,27 @@
 from flask import Flask, request, jsonify;
+import pymysql
 
 app = Flask(__name__)
+
+def get_db_connection():
+    connection =  pymysql.connect(
+        host='localhost',
+        user='root',
+        password='',
+        database='101',
+        cursorclass=pymysql.cursors.DictCursor)
+    return connection
+
+@app.route('/api/usuarios', methods=['GET'])
+def get_usuarios():
+    connection = get_db_connection()
+    with connection.cursor() as cursor:
+        sql ="SELECT id, nombre, email FROM usuarios"
+        cursor.execute(sql)
+        usuarios = cursor.fetchall()
+    connection.close()
+    return jsonify(usuarios)
+
 
 @app.route('/')
 def home():
