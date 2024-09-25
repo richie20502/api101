@@ -38,8 +38,9 @@ FLASK_ENV=development flask run
 
 ```
 
-```bash
+### Estructura del proyecto
 
+```bash
 ├── app.py                     # Archivo principal que arranca la aplicación
 ├── controllers/
 │   ├── __init__.py            # Inicializador del módulo
