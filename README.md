@@ -20,7 +20,13 @@ Instrucciones para instalar y configurar el proyecto. Asegúrate de incluir cual
 Lista de las dependencias que deben instalarse antes de usar el proyecto.
 
 ```bash
-#activar virtualen
+#instalar virtual env
+pip install virtualenv
+
+#Generar virtual env
+virtualenv venv
+
+#activar virtual env
 venv\Scripts\activate
 
 # Ejemplo para Python
