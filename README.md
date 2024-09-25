@@ -31,4 +31,9 @@ venv\Scripts\activate
 
 # Ejemplo para Python
 pip install -r requirements.txt
+
+#agregamos el modo debug
+
+FLASK_ENV=development flask run
+
 ```

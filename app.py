@@ -14,6 +14,7 @@ def get_db_connection():
 
 @app.route('/api/usuarios', methods=['GET'])
 def get_usuarios():
+    print("get data usuario")
     connection = get_db_connection()
     with connection.cursor() as cursor:
         sql ="SELECT id, nombre, email FROM usuarios"
@@ -62,4 +63,4 @@ def det_data_post():
     })
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
