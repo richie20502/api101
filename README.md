@@ -37,3 +37,17 @@ pip install -r requirements.txt
 FLASK_ENV=development flask run
 
 ```
+
+```bash
+
+├── app.py                     # Archivo principal que arranca la aplicación
+├── controllers/
+│   ├── __init__.py            # Inicializador del módulo
+│   └── usuarios_controller.py # Lógica para usuarios
+├── routes/
+│   ├── __init__.py            # Inicializador del módulo, y registro de rutas
+│   └── usuarios.py            # Rutas de usuarios que llaman a los controladores
+├── db.py                      # Archivo para la conexión a la base de datos
+└── requirements.txt           # Dependencias del proyecto
+
+```
