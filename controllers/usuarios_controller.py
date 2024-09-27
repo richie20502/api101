@@ -1,20 +1,11 @@
-# controllers/usuarios_controller.py
-from db import get_db_connection
+from models.usuario import Usuario
+from models import db
 
 def obtener_usuarios():
-    connection = get_db_connection()
-    with connection.cursor() as cursor:
-        sql = "SELECT id, nombre, email FROM usuarios"
-        cursor.execute(sql)
-        usuarios = cursor.fetchall()
-    connection.close()
-    return usuarios
+    return Usuario.query.all()
 
 def agregar_usuario(nombre, email):
-    connection = get_db_connection()
-    with connection.cursor() as cursor:
-        sql = "INSERT INTO usuarios (nombre, email) VALUES (%s, %s)"
-        cursor.execute(sql, (nombre, email))
-        connection.commit()
-    connection.close()
+    nuevo_usuario = Usuario(nombre=nombre, email=email)
+    db.session.add(nuevo_usuario)
+    db.session.commit()
     return "Usuario agregado correctamente"

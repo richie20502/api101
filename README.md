@@ -36,19 +36,27 @@ pip install -r requirements.txt
 
 FLASK_ENV=development flask run
 
+#MVC ORM
+
+pip install Flask SQLAlchemy
+
 ```
 
 ### Estructura del proyecto
 
 ```bash
-├── app.py                     # Archivo principal que arranca la aplicación
-├── controllers/
-│   ├── __init__.py            # Inicializador del módulo
-│   └── usuarios_controller.py # Lógica para usuarios
-├── routes/
-│   ├── __init__.py            # Inicializador del módulo, y registro de rutas
-│   └── usuarios.py            # Rutas de usuarios que llaman a los controladores
-├── db.py                      # Archivo para la conexión a la base de datos
-└── requirements.txt           # Dependencias del proyecto
+├── app.py                   # Archivo principal que arranca la aplicación
+├── config.py                # Configuración de la aplicación (incluye la conexión a la base de datos)
+├── models/                  # Directorio de modelos (SQLAlchemy)
+│   ├── __init__.py          # Inicializador de los modelos y conexión a la DB
+│   └── usuario.py           # Modelo de la tabla 'usuarios'
+├── controllers/             # Directorio de controladores
+│   ├── __init__.py          # Inicializador del módulo de controladores
+│   └── usuarios_controller.py # Controlador con la lógica de los usuarios
+├── routes/                  # Directorio de rutas
+│   ├── __init__.py          # Inicializador del módulo de rutas
+│   └── usuarios.py          # Rutas de usuarios
+├── db.py                    # Archivo para inicializar la base de datos
+└── requirements.txt         # Dependencias del proyecto
 
 ```
