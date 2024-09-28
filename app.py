@@ -14,6 +14,7 @@ def get_db_connection():
 
 @app.route('/api/usuarios', methods=['GET'])
 def get_usuarios():
+    print("holah-------------hhh")
     connection = get_db_connection()
     with connection.cursor() as cursor:
         sql ="SELECT id, nombre, email FROM usuarios"
@@ -22,6 +23,19 @@ def get_usuarios():
     connection.close()
     return jsonify(usuarios)
 
+
+@app.route('/api/usuarios', methods=['POST'])
+def add_usuarios():
+    data = request.json
+    connection = get_db_connection()
+    with connection.cursor() as cursor:
+        sql = "INSERT INTO usuarios (nombre, email) VALUES (%s, %s)"
+        cursor.execute(sql,(data['nombre'], data['email']))
+        connection.commit()
+    connection.close()
+    return jsonify({ "message" : "Usuario agregado correctamente"}), 201
+    
+        
 
 @app.route('/')
 def home():
@@ -34,8 +48,7 @@ def det_data_get():
     content_body = {
         "name": "Ricardo",
         "last_name": "Lugo"
-    } 
-    
+    }
     return jsonify(content_body)
 
 @app.route('/api/data', methods=['POST'])
@@ -48,5 +61,6 @@ def det_data_post():
         "recived" : content_body
     })
 
+
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
