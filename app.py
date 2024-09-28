@@ -14,7 +14,7 @@ def get_db_connection():
 
 @app.route('/api/usuarios', methods=['GET'])
 def get_usuarios():
-    print("holah-------------hhh")
+    print("get data usuario")
     connection = get_db_connection()
     with connection.cursor() as cursor:
         sql ="SELECT id, nombre, email FROM usuarios"
@@ -22,6 +22,19 @@ def get_usuarios():
         usuarios = cursor.fetchall()
     connection.close()
     return jsonify(usuarios)
+
+@app.route('/api/usuarios', methods=['POST'])
+def add_usuario():
+    print("nunca")
+    data = request.json
+    connection = get_db_connection()
+    with connection.cursor() as cursor:
+        sql = "INSERT INTO usuarios (nombre, email) VALUES (%s, %s)"
+        cursor.execute(sql, (data['nombre'], data['email']))
+        connection.commit()
+    connection.close()
+    return jsonify({"message": "Usuario agregado correctamente"}), 201
+
 
 
 @app.route('/api/usuarios', methods=['POST'])
