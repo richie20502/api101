@@ -1,1 +1,1 @@
-from controllers.usuarios_controller import obtener_usuario
+from controllers.usuarios_controller import *

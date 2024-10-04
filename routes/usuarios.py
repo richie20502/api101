@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 
-from controllers.usuarios_controller import obtener_usuario
+from controllers.usuarios_controller import *
 
 usuarios_routes = Blueprint('usuarios',__name__)
 
@@ -15,4 +15,11 @@ def get_usuarios():
     } for u in usuarios]
     
     return jsonify(usuarios_serializados)
+
+@usuarios_routes.route('/api/usuarios', methods=['POST'])
+def post_usuarios():
+    data = request.json
+    mensaje = agregar_usuario(data)
+    return jsonify ({"mensaje": mensaje})
+
 
