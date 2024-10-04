@@ -1,10 +1,14 @@
 from flask import Flask
-from routes import init_routes
+from config import Config
+from models import db
+from routes import init_routes 
 
 app = Flask(__name__)
-print('######')
-print(app)
-print('######')
+app.config.from_object(Config)
+
+#inicializamos la base de datos
+db.init_app(app)
+
 init_routes(app)
 
 if __name__ == '__main__':

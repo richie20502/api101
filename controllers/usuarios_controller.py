@@ -1,10 +1,5 @@
-from db  import get_db_connection
+from models.usuario import Usuario
+from models import db
 
 def obtener_usuario():
-    connection = get_db_connection()
-    with connection.cursor() as cursor:
-        sql ="SELECT id, nombre, email FROM usuarios"
-        cursor.execute(sql)
-        usuarios = cursor.fetchall()
-    connection.close()
-    return usuarios
+    return Usuario.query.all()
