@@ -1,0 +1,146 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Documentación de la API Flask DSM 10222",
+      "version": "1.0.0",
+      "title": "API Flask DSM 101"
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/api/usuarios": {
+        "get": {
+          "summary": "Obtener lista de usuarios",
+          "description": "Devuelve una lista de todos los usuarios registrados",
+          "responses": {
+            "200": {
+              "description": "Lista de usuarios",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "nombre": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Agregar un nuevo usuario",
+          "description": "Agrega un nuevo usuario proporcionando nombre y email",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Datos del usuario a agregar",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Usuario agregado correctamente"
+            }
+          }
+        }
+      },
+      "/api/usuarios/{id}": {
+        "put": {
+          "summary": "Actualizar usuario",
+          "description": "Actualiza un usuario existente basado en su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID del usuario a actualizar"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Datos actualizados del usuario",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nombre": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Usuario actualizado correctamente"
+            },
+            "404": {
+              "description": "Usuario no encontrado"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Eliminar usuario",
+          "description": "Elimina un usuario existente basado en su ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "integer",
+              "description": "ID del usuario a eliminar"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Usuario eliminado correctamente"
+            },
+            "404": {
+              "description": "Usuario no encontrado"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  

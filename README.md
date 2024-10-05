@@ -36,4 +36,7 @@ pip install -r requirements.txt
 
 FLASK_ENV=development flask run
 
+#agregos swagger open API  
+pip install flask-swagger-ui flask-restful
+
 ```
