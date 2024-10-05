@@ -23,3 +23,17 @@ def post_usuarios():
     return jsonify ({"mensaje": mensaje})
 
 
+@usuarios_routes.route('/api/usuarios/<int:id>', methods=['PUT'])
+def put_usuario(id):
+    data = request.json
+    mensaje = actualizar_usuario(id, data['nombre'], data['email'])
+    if mensaje == "Usuario no encontrado":
+        return jsonify({"message": mensaje}), 404
+    return jsonify({"message": mensaje})
+
+@usuarios_routes.route('/api/usuarios/<int:id>', methods=['DELETE'])
+def delete_usuario(id):
+    mensaje = eliminar_usuario(id)
+    if mensaje == "Usuario no encontrado":
+        return jsonify({"message": mensaje}), 404
+    return jsonify({"message": mensaje})
