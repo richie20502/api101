@@ -10,11 +10,19 @@ def agregar_usuario(data):
     db.session.commit()
     return "Usuario agregado correctamente"
 
-def actualizar_usuario(id, nombre, email):
+
+
+def actualizar_usuario(id,data):
     usuario = Usuario.query.get(id)
+    print("usuaro query")
+    print(usuario.nombre)
+    print(usuario.email)
     if usuario:
-        usuario.nombre = nombre
-        usuario.email = email
+        usuario.nombre = data['nombre']
+        usuario.email = data['email']
+        print('update usuario')
+        print(usuario.nombre)
+        print(usuario.email)
         db.session.commit()
         return "Usuario actualizado correctamente"
     else:

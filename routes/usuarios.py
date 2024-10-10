@@ -26,7 +26,7 @@ def post_usuarios():
 @usuarios_routes.route('/api/usuarios/<int:id>', methods=['PUT'])
 def put_usuario(id):
     data = request.json
-    mensaje = actualizar_usuario(id, data['nombre'], data['email'])
+    mensaje = actualizar_usuario(id, data)
     if mensaje == "Usuario no encontrado":
         return jsonify({"message": mensaje}), 404
     return jsonify({"message": mensaje})
